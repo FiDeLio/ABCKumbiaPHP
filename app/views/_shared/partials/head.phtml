@@ -1,0 +1,19 @@
+<?php
+/**
+ * PHP version 5
+ * LICENSE
+ *
+ *
+ * @author Fidel Oyarzo <fidel.oyarzo@gmail.com>
+ */
+?>
+<table width="90%">
+<tr>
+	<td><?php echo Html::img('logo.jpg'); ?></td>
+	<td><?php echo Button::link('usuarios/iExit', 'Salir', 'title="Salir del Sistema"'); ?> </td>
+</tr>
+<tr>
+	<td>Bienvenido, <?php echo Load::model('sesiones')->getData('usuarios_nombre') ?></td>
+	<td>&nbsp;</td>
+</tr>
+</table>

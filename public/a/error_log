@@ -1,0 +1,8 @@
+[23-Nov-2010 00:01:50] PHP Fatal error:  Class 'Paginador' not found in /home/ptovtama/public_html/admin/index.php on line 45
+[23-Nov-2010 00:07:25] PHP Fatal error:  Class 'Paginador' not found in /home/ptovtama/public_html/admin/index.php on line 45
+[23-Nov-2010 00:07:28] PHP Fatal error:  Class 'Paginador' not found in /home/ptovtama/public_html/admin/index.php on line 45
+[23-Nov-2010 00:07:28] PHP Fatal error:  Class 'Paginador' not found in /home/ptovtama/public_html/admin/index.php on line 45
+[23-Nov-2010 00:07:28] PHP Fatal error:  Class 'Paginador' not found in /home/ptovtama/public_html/admin/index.php on line 45
+[23-Nov-2010 00:07:28] PHP Fatal error:  Class 'Paginador' not found in /home/ptovtama/public_html/admin/index.php on line 45
+[23-Nov-2010 00:10:32] PHP Fatal error:  Class 'vIndex' not found in /home/ptovtama/public_html/admin/index.php on line 57
+[23-Nov-2010 00:12:18] PHP Fatal error:  Smarty error: [in index.tpl line 68]: syntax error: unclosed tag \{if} (opened line 53). (Smarty_Compiler.class.php, line 317) in /home/ptovtama/public_html/lib/Smarty/libs/Smarty.class.php on line 1095

@@ -1,0 +1,80 @@
+<?php
+/**
+ * @author Fidel Oyarzo <fidel.oyarzo@gmail.com>
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="es ">
+	<head>
+		<meta http-equiv='Content-type' content='text/html; charset=<?php echo APP_CHARSET ?>' />
+		<title><?php echo $pageTitle; ?></title>
+		<link href="<?php echo  PUBLIC_PATH . 'css/textos.css'; ?>" rel="stylesheet" type="text/css" media="all">
+                <link href="<?php echo  PUBLIC_PATH . 'css/elementos.css'; ?>" rel="stylesheet" type="text/css" media="all">
+	</head>
+                <link href="<?php echo  PUBLIC_PATH  . 'css/style.css'; ?>" rel="stylesheet" type="text/css" />
+                <style type="text/css">
+                .manito{
+                    cursor: pointer;
+                }   
+                </style>
+        <body background="<?php echo  PUBLIC_PATH . 'img/main_bg.gif' ?>" bgcolor="#ffffff">
+<div class="warning flash">Existe otro usuario con la misma cuenta conectado, ¿Desea desconectarlo?
+            <?php echo Html::img('botones/si.gif', 'SI', 'onclick=document.forms[0].submit(); class="manito"'); ?>
+            <?php echo Html::link('', Html::img('botones/no.gif', 'NO')); ?>
+</div>	    
+	<br>
+	<br>
+        <?php echo Form::open('') ?>
+				<input type="hidden" name='mode' value='new_auth_login' />
+		<table width="699" border="0" cellspacing="0" cellpadding="0" align="center" background="<?php echo PUBLIC_PATH . "img/login.gif" ?>" height="412">
+			<tr>
+				<td width="174"></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td width="174"><img src="<?php echo PUBLIC_PATH . "img/Vista-password.png" ?>" alt="" height="128" width="128" align="right" border="0"></td>
+				<td>
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td class="txtLogin" colspan="2" width="104"><b>Control Acceso</b></td>
+							<td class="txtLogin" >&nbsp;</td>
+						</tr>
+						<tr>
+							<td width="20"></td>
+							<td class="txtLogin" width="80">Usuario:</td>
+                                                        <td><?php echo Form::text("usuarios_usuario", 'class="textBox" size="24"'); ?></td>
+						</tr>
+						<tr>
+							<td width="20"></td>
+							<td class="txtLogin" width="80">Password:</td>
+                                                        <td><?php echo Form::pass("usuarios_password", 'class="textBox" size="24"'); ?></td>
+						</tr>
+						<tr>
+							<td colspan=3 >&nbsp;</td>
+						</tr>						
+						<tr>
+							<td colspan=3 class="txtMsgLogin" align="center"><?php echo $_SESSION['msg']; ?></td>
+						</tr>
+						<tr>
+							<td colspan=2>&nbsp;</td>
+                                                        <td align="right">
+                                                            <br>
+                                                                <?php echo Form::submit("Entrar", 'class="boton"'); ?>
+                                                            <br>
+                                                            <div class="txtMsgLogin" id="msgLogin" align="left"></div>
+                                                        </td>
+						</tr>
+					</table>
+				</td>
+                                <td></td>
+			</tr>
+			<tr>
+				<td width="174"></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+            <?php echo Form::close('') ?>
+	</body>
+</html>

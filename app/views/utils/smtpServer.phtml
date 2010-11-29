@@ -1,0 +1,38 @@
+<?php
+/**
+ * Solicitudes & ordenes de compra
+ * PHP version 5
+ * LICENSE
+ *
+ * This source file is subject to the GNU/GPL that is bundled
+ * with this package in the file docs/LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to fidel.oyarzo@gmail.com so we can send you a copy immediately.
+ *
+ * @author Fidel Oyarzo <fidel.oyarzo@gmail.com>
+ */
+View::content();
+?>
+<?php echo Form::open('') ?>
+<?php echo Form::hidden('servidor.id');?>
+        <div class="div-form">
+                <dl>
+                        <dt>Servidor</dt>
+                                <dd><?php echo Form::text("servidor.smtp_server"); ?></dd>
+                        <dt>Puerto SMTP</dt>
+                                <dd><?php echo Form::text("servidor.smtp_port"); ?></dd>
+                        <dt>Usuario</dt>
+                                <dd><?php echo Form::text("servidor.user"); ?></dd>
+                        <dt>Contrase&ntilde;a</dt>
+                                <dd><?php echo Form::text("servidor.password"); ?></dd>
+                        <dt>Remite</dt>
+                                <dd><?php echo Form::text("servidor.smtp_from"); ?></dd>                                
+                        <dt>Mail admin</dt>
+                                <dd><?php echo Form::text("servidor.admin"); ?></dd>
+                        <dt>&nbsp;</dt>
+                            <dd><?php echo Form::submit("Aplicar Cambios"); ?></dd>
+                </dl>
+        </div>
+<?php echo Form::close() ?>
