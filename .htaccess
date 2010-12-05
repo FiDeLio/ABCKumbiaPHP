@@ -4,3 +4,4 @@ DirectoryIndex index.php
     RewriteRule  ^$ default/public/    [L]
     RewriteRule  (.*) default/public/$1 [L]
 </IfModule>
+#Un comentario
