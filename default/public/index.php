@@ -41,6 +41,7 @@ define('START_TIME', microtime(1));
  * - Esta ruta se utiliza para cargar los archivos de la aplicacion
  */
 define('APP_PATH', dirname(dirname(__FILE__)) . '/app/');
+define('APP_PUBLIC', dirname(dirname(__FILE__)) . '/public/');
 
 /**
  * Define el CORE_PATH
