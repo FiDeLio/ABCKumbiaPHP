@@ -1,0 +1,2 @@
+[Thu, 25 Nov 10 08:54:54 -0300][DEBUG] DESCRIBE `documentos`
+[Thu, 25 Nov 10 08:54:54 -0300][DEBUG] select distinct (ciudes) as id, ciudes from documentos where carteras_id = 57 order by ciudes

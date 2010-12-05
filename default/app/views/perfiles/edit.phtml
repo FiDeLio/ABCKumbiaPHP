@@ -1,0 +1,36 @@
+<?php
+/**
+ * SAV (Sistema de administracion de visitas)
+ * PHP version 5
+ * LICENSE
+ *
+ *
+ * Vista edit
+ * created 25-08-2010
+ * @category app
+ * @package views
+ * @author Fidel Oyarzo <fidel.oyarzo@gmail.com>
+ */
+?>
+<?php view::content(); ?>
+<?php echo Button::link('perfiles', 'Listado')?>
+<?php echo Form::open(); ?>
+<?php echo Form::hidden('perfiles.id'); ?>
+<div id="newspaper-a">
+<table>
+    <tr>
+        <th>Nombre</th>
+        <td><?php echo Form::text('perfiles.nombre'); ?></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td><?php echo Button::submit('Actualizar perfiles'); ?></td>
+    </tr>
+</table>
+</div>
+<?php echo Form::close(); ?>
+<script type='text/javascript'>
+<?php if($reader){ ?>
+$(":input").attr('disabled','disabled');
+<?php } ?>
+</script>

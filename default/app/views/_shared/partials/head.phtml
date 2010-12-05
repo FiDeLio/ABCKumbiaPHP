@@ -1,0 +1,16 @@
+<?php
+/**
+ * PHP version 5
+ * LICENSE
+ *
+ *
+ * @author Fidel Oyarzo <fidel.oyarzo@gmail.com>
+ */
+?>
+<div id="header">
+<?php echo Html::img('logo.jpg', 'Logo Kumbia', 'class="lefter"'); ?>
+<p class="righter">Bienvenido, <?php echo Load::model('sesiones')->getData('usuarios_nombre') ?><br />
+<?php echo Button::link('usuarios/iExit', 'Salir', 'title="Salir del Sistema" class="button"'); ?>
+</p>
+</div>
+<hr />

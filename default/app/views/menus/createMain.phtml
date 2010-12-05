@@ -1,0 +1,54 @@
+<?php
+/**
+ * 
+ * PHP version 5
+ * LICENSE
+ *
+ * This source file is subject to the GNU/GPL that is bundled
+ * with this package in the file docs/LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to fidel.oyarzo@gmail.com so we can send you a copy immediately.
+ *
+ * @author Fidel Oyarzo <fidel.oyarzo@gmail.com>
+ */
+?>
+<?php View::content(); ?>
+
+<?php echo Tag::js('jquery/ui/jquery.ui.mouse.min'); ?>
+<?php echo Tag::js('jquery/ui/jquery.ui.sortable.min'); ?>
+
+
+	<style type="text/css"> 
+	#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+	#sortable li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; height: 1.5em; }
+	html>body #sortable li { height: 1.5em; line-height: 1.2em; }
+	.ui-state-highlight { height: 1.5em; line-height: 1.2em; }
+	</style> 
+	<script type="text/javascript"> 
+	$(function() {
+		$("#sortable").sortable({
+			placeholder: 'ui-state-highlight'
+		});
+		$("#sortable").disableSelection();
+	});
+	</script> 
+
+
+<?php echo Form::open() ?>
+
+<ul id="sortable">
+<?php $i=0; foreach($menus as $menu): ?>
+	<li class="ui-state-default">
+		<?php echo Html::link('menus', $menu->nombre, '') ?>
+		<?php echo Form::hidden("menus[$menu->id]", null, $i++); ?>
+	</li> 
+<?php endforeach; ?>
+<li class="ui-state-default">
+	<?php echo Form::text('nombre', 'size=60') ?>
+	<?php echo Form::hidden("menus[0]", null, $i++); ?>
+</li>
+</ul>
+<?php echo Button::submit('Aplicar Cambios') ?>
+<?php echo Form::close(); ?>

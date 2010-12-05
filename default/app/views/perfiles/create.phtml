@@ -1,0 +1,29 @@
+<?php
+/**
+ * PHP version 5
+ * LICENSE
+ *
+ *
+ * Vista create
+ * created 25-08-2010
+ * @category app
+ * @package views
+ * @author Fidel Oyarzo <fidel.oyarzo@gmail.com>
+ */
+?>
+<?php view::content(); ?>
+<?php echo Button::link('perfiles', 'Listado')?>
+<?php echo Form::open(); ?>
+<div id="newspaper-a">
+<table id='margen'>
+    <tr>
+        <th>Nombre</th>
+        <td><?php echo Form::text('perfiles.nombre'); ?></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td><?php echo Button::submit('Crear perfiles'); ?></td>
+    </tr>
+</table>
+</div>
+<?php echo Form::close(); ?>

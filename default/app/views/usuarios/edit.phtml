@@ -1,0 +1,79 @@
+<?php
+/**
+ * 
+ * PHP version 5
+ * LICENSE
+ *
+ *
+ * @author Fidel Oyarzo <fidel.oyarzo@gmail.com>
+ */
+?>
+<?php View::content(); ?>
+<?php echo Form::open(); ?>
+<?php echo Form::hidden('usuarios.id'); ?>
+<?php echo Form::hidden('usuarios.password'); ?>
+<?php echo Button::link($controller_name, 'Listado'); ?>
+<div id="newspaper-a">
+<table id='margen'>
+<table>
+    <tr>
+        <th>Usuario *</th>
+        <td><?php echo Form::text('usuarios.usuario'); ?></td>
+    </tr>
+    <tr>
+        <th>Clave *</th>
+        <td><?php echo Form::text('usuarios.clave', null, ''); ?></td>
+    </tr>
+    <tr>
+        <th>Nombres</th>
+        <td><?php echo Form::text('usuarios.nombres'); ?></td>
+    </tr>
+    <tr>
+        <th>Apellidos</th>
+        <td><?php echo Form::text('usuarios.apellidos'); ?></td>
+    </tr>    
+    <tr>
+        <th>Mail</th>
+        <td><?php echo Form::text('usuarios.mail'); ?></td>
+    </tr>
+    <tr>
+        <th>Fono</th>
+        <td><?php echo Form::text('usuarios.telefono'); ?></td>
+    </tr>
+    <tr>
+        <th>Movil</th>
+        <td><?php echo Form::text('usuarios.movil'); ?></td>
+    </tr>
+    <tr>
+        <th>Direcci&oacute;n</th>
+        <td><?php echo Form::text('usuarios.direccion'); ?></td>
+    </tr>
+    <tr>
+            <th>Firma*</th>
+            <td><?php echo Form::text('usuarios.firma','size=40'); ?></td>
+    </tr>
+    <tr>
+        <th>Perfiles *</th>
+        <td><?php echo Form::dbSelect('usuarios.perfiles_id', 'nombre'); ?></td>
+    </tr>
+    <tr>
+            <th>Estado *</th>
+            <td><?php echo Form::select('usuarios.status',array('A'=> 'Activo', 'D'=>'Desactivo')); ?></td>
+    </tr>
+    <tr>
+        <th>Observaciones</th>
+        <td><?php echo Form::textarea('usuarios.observaciones', array('cols' => 40, 'rows' => 5)); ?></td>
+    </tr>    
+    <tr>
+        <td>&nbsp;</td>
+        <td><?php echo Button::submit('Actualizar Usuario'); ?></td>
+    </tr>    
+</table>
+<div>
+</div>
+<?php echo Form::close(); ?>
+<script type='text/javascript'>
+<?php if($reader){ ?>
+$(":input").attr('disabled','disabled');
+<?php } ?>
+</script>

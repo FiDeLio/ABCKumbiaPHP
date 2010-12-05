@@ -1,0 +1,75 @@
+<?php
+/**
+ * Formulario realizado con autocarga de objeto
+ * model.campo
+ * 
+ * KumbiaPHP implementa la autocarga de objeto la cual siguiendo la convencion model.field
+ * En este caso el model es "controllers" si vamos a la BD se vera que existe una tabla
+ * llamada "controllers" y field (campo) serán los campos de esa tabla.
+ * 
+ * Veamos la estructuta de tabla controllers:
+ * CREATE TABLE controllers
+ * (
+ *   id           int            unique not null auto_increment,
+ *   nombre       varchar(100),
+ *   url          varchar(100)   not null,
+ *   status       char(1)        not null,
+ *   perfiles_id  int            not null,
+ *   menu_id      int            not null,
+ *   primary key(id),
+ *   foreign key(perfiles_id) references perfiles(id),
+ *   foreign key(menu_id) references menus(id)
+ * )
+ * TYPE = InnoDB;
+ * 
+ * En concordancia con los fields (campos) de la tabla "controllers" se indica el comportamiento de la autocarga de objeto
+ * para que el controller no tener que recoger cada uno de los valores enviado por POST.
+ * 
+ * Para este caso haremos en los helpers:
+ * text_field_tag(array('controllers.url'))
+ * 
+ * Automáticamente cuando ese valor vaya al action menus/create KumbiaPHP interpreta que existe una tabla "controllers" con un campo "url"
+ * y si vemos la estructura de la tabla es asi.
+ * 
+ * Ahora debes ir al método create del controller menus, para que observes como se hace esta asociación.  
+ */
+?>
+<?php View::content(); ?>
+<?php echo Button::link($controller_name, 'Listado'); ?>
+<?php echo Form::open('menus/create') ?>
+<div id="newspaper-a">
+<table id="margen">
+	<tr>
+		<th>Perfil</th>
+		<td><?php echo Form::dbSelect('controllers.perfiles_id', 'nombre') ?>
+        </td>
+	</tr>
+	<tr>
+		<th>Menú</th>
+		<td><?php echo Form::dbSelect('controllers.menus_id', 'nombre', null, 'Seleccione...') ?>
+        </td>
+	</tr>
+	<tr>
+		<th>URL</th>
+		<td><?php echo Form::text('controllers.url', 'size=100') ?></td>
+	</tr>
+	<tr>
+		<th>Nombre a mostrar</th>
+		<td><?php echo Form::text('controllers.nombre', 'size=100') ?></td>
+	</tr>	
+	<tr>
+		<th>Orden</th>
+		<td><?php echo Form::text('controllers.orden', 'size=4') ?></td>
+	</tr>
+	<tr>
+		<th>Estado</th>
+		<td>
+		<?php echo Form::select('controllers.status',  array('A'=>'Activo','D'=>'Desactivado')) ?>
+        </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><?php echo Button::submit('Agregar') ?></td>
+	</tr>
+</table>
+<?php echo Form::close() ?>

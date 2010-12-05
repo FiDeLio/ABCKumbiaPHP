@@ -1,0 +1,7 @@
+<?php
+    	View::content();
+    	$dataGrid			=	new dataGrid($items);
+	$dataGrid->create = 'perfiles/create';
+	$dataGrid->edit = 'perfiles/edit';
+    	View::partial('datagrid/default',false,array('dataGrid'=>$dataGrid));
+?>

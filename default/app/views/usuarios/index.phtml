@@ -1,0 +1,23 @@
+<?php
+/**
+ * Cobros Consultores
+ * PHP version 5
+ * LICENSE
+ *
+ *
+ * Vista index
+ * @category app
+ * @package views
+ * @author Fidel Oyarzo <fidel.oyarzo@gmail.com>
+ */
+
+view::content();
+$dataGrid = new dataGrid($usuarios);
+$dataGrid->ignore('password');
+
+$dataGrid->create = 'usuarios/create';
+$dataGrid->edit = 'usuarios/edit';
+$dataGrid->delete = 'usuarios/delete';
+$dataGrid->delete_confirm = '¿Desea eliminar el registro {id}?';
+View::partial('datagrid/default',false,array('dataGrid'=>$dataGrid));
+?>

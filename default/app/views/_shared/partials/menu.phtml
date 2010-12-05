@@ -1,0 +1,46 @@
+<?php
+/**
+ * Menu CSS
+ * PHP version 5
+ * LICENSE
+ *
+ * @author fidel.oyarzo@gmail.com
+ * @author Alberto Berrotera <aberroteran@live.com>
+ */
+?>
+
+    <div id='navigation'>
+        <ul>
+            <?php foreach(Load::model('controllers')->getMenu() as $item): ?>
+            <li>
+                <a href='#'><?php echo $item->nombre ?></a>
+                <ul>
+                <?php foreach (Load::model('controllers')->getSubMenu($item->id) as $controlador):
+                    $onclick='';
+                    $more = '';
+		    $controlador->url = $controlador->url . '/';
+                    if($controlador->url=='./'){
+                        $onclick = "onclick='return false'";
+                        $more = '  >>';
+                    }elseif($controlador->url=='index/'){
+			$controlador->url = '';
+		    }
+                ?>
+                        <li><?php echo Html::link("$controlador->url", $controlador->nombre . $more, $onclick) ?>
+                        <?php if($controlador->url=='./'){ ?>
+                            <ul>
+                                <?php foreach (Load::model('controllers')->getSubMenu2($controlador->id) as $item): ?>
+				<li>
+                                    <?php echo Html::link("$item->url/", $item->nombre) ?>
+				</li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php } ?>
+                        </li>
+                <?php endforeach; ?>
+                </ul>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+	<hr />
+    </div>

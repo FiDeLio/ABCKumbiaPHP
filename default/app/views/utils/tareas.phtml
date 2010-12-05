@@ -1,0 +1,7 @@
+<?php
+    View::content();
+    $dataGrid   =   new dataGrid($items);
+    $dataGrid->setAlias('status', array('L'=>'LISTO', 'P'=>'PENDIENTE'));
+    $dataGrid->create   =   $controller_name . '/createTareas';
+    View::partial('datagrid/default', false, array('dataGrid'=>$dataGrid));
+?>

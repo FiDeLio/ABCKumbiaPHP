@@ -1,0 +1,10 @@
+[Fri, 19 Nov 10 16:17:10 -0300][MODELO] exception 'KumbiaException' with message 'No existe el método 'usuarios.delete' en ActiveRecord::Usuarios' in /home/fidelio/www/appCobros/core/libs/kumbia_active_record/kumbia_active_record.php:529
+Stack trace:
+#0 /home/fidelio/www/appCobros/default/app/libs/active_record.php(24): KumbiaActiveRecord->__call('usuarios.delete', Array)
+#1 /home/fidelio/www/appCobros/default/app/libs/active_record.php(24): Usuarios->usuarios.delete('15')
+#2 /home/fidelio/www/appCobros/default/app/controllers/usuarios_controller.php(74): ActiveRecord->input('usuarios.delete', '15')
+#3 [internal function]: UsuariosController->delete('15')
+#4 /home/fidelio/www/appCobros/core/kumbia/dispatcher.php(82): ReflectionMethod->invokeArgs(Object(UsuariosController), Array)
+#5 /home/fidelio/www/appCobros/core/kumbia/bootstrap.php(112): Dispatcher::execute(Array)
+#6 /home/fidelio/www/appCobros/default/public/index.php(77): require('/home/fidelio/w...')
+#7 {main}

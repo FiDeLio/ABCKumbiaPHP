@@ -1,0 +1,56 @@
+<?php
+/**
+ *
+ * PHP version 5
+ * LICENSE
+ *
+ * This source file is subject to the GNU/GPL that is bundled
+ * with this package in the file docs/LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to fidel.oyarzo@gmail.com so we can send you a copy immediately.
+ *
+ * @author Fidel Oyarzo <fidel.oyarzo@gmail.com>
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv='Content-type' content='text/html; charset=<?php echo APP_CHARSET ?>' />
+	<title><?php echo $pageTitle; ?></title>
+	<?php echo Tag::css('themes/custom-theme/jquery-ui-1.8.6.custom') ?>
+	<?php echo Tag::css('table') ?>
+	<?php echo Tag::css('bienvenida') ?>
+	<?php echo Tag::css('menus/style') ?>
+	<?php echo Tag::css('style'); ?>
+	<?php echo Html::includeCss() ?>
+</head>
+<body>
+	<?php View::partial('head') ; ?>
+	<div id="main">
+		<?php View::partial('menu'); ?>
+		<?php View::content() ?>
+	</div>
+	<?php View::partial('footer'); ?>
+	<?php echo Tag::js('jquery/jquery.min') . "\n"; ?>
+	<?php //echo Tag::js('jquery/jquery.kumbiaphp') . "\n"; ?>
+	<?php echo Tag::js('jquery/ui/ui.core'); ?>
+	<?php echo Tag::js('jquery/jquery.droppy') ?>
+	<?php echo Tag::js('jquery/ui/jquery.ui.widget.min'); ?>
+	<?php echo Tag::js('jquery/ui/jquery.ui.button.min');    ?>
+<script type='text/javascript'>
+  $(function() {
+    $('#nav').droppy();
+  });
+  $("input:text:visible:first").focus();
+
+      function stopRKey(evt) {
+      var evt = (evt) ? evt : ((event) ? event : null);
+      var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+      if ((evt.keyCode == 13) && (node.type=="text")) {return false;}
+      }
+      document.onkeypress = stopRKey;
+</script>
+</body>
+</html>
