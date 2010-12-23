@@ -179,10 +179,21 @@ if($dataGrid->existData()){
 			$format="";
 			if(isset($dataGrid->values[$field])){
 				$UModel = Util::camelcase($dataGrid->values[$field][0]);
-				$campo = $dataGrid->values[$field][1];
 				$model = new $UModel();
-				$model->find($source->$field);
-				$value = $model->$campo;
+				$model->find($source->$field);				
+				$campo = $dataGrid->values[$field][1];
+				if(strstr($campo, ', ')){
+					$campos = explode(', ', $campo);
+					$auxValue = '';
+					for($m=1;$m<=count($campos);$m++){
+						if(!empty($campos[$m])){
+							$auxValue .= $model->$campos[$m] . $campos[0];	
+						}
+					}
+					$value = substr($auxValue,0, -1);
+				}else{
+					$value = $model->$campo;	
+				}
 			}
 	?>
 			<td class='<?php echo $format ?>'><?php echo $value; ?></td>
@@ -196,9 +207,18 @@ if($dataGrid->existData()){
 			}	
 			unset($format);
 		}
+			if($dataGrid->read!=''){ 	?>
+				<td><a href="<?php echo PUBLIC_PATH . $dataGrid->read .'/' . $source->$pk; ?>"> <img src="<?php echo PUBLIC_PATH . 'img/datagrid/read.gif' ?>" class='opciones'></a></td>
+	<?php
+			}		
 			if($dataGrid->edit!=''){ 	?>
-				<td><a href="<?php echo PUBLIC_PATH . $dataGrid->edit .'/' . $source->$pk; ?>"> <img src="<?php echo PUBLIC_PATH . 'img/datagrid/edit.gif' ?>" class='edit'></a></td>
+				<td><a href="<?php echo PUBLIC_PATH . $dataGrid->edit .'/' . $source->$pk; ?>"> <img src="<?php echo PUBLIC_PATH . 'img/datagrid/edit.gif' ?>" class='opciones'></a></td>
+	<?php
+			}
+				if($dataGrid->opClonar!=''){ 	?>
+				<td><a href="<?php echo PUBLIC_PATH . $dataGrid->opClonar .'/' . $source->$pk; ?>"> <img src="<?php echo PUBLIC_PATH . 'img/datagrid/clonar.gif' ?>" class='opciones'></a></td>
 	<?php		}
+	
 			if($dataGrid->delete!=''){
 				$confirm		=	'';
 				if($dataGrid->delete_confirm!=''){
@@ -218,13 +238,13 @@ if($dataGrid->existData()){
 					unset($item); ?>
 	<?php 
 				} ?>
-				<td><a href="<?php echo PUBLIC_PATH . $dataGrid->delete .'/' . $source->$pk; ?>"> <img src="<?php echo PUBLIC_PATH . 'img/datagrid/delete.gif' ?>" class='delete' <?php echo $confirm ?>></a></td>				
+				<td><a href="<?php echo PUBLIC_PATH . $dataGrid->delete .'/' . $source->$pk; ?>"> <img src="<?php echo PUBLIC_PATH . 'img/datagrid/delete.gif' ?>" class='opciones' <?php echo $confirm ?>></a></td>				
 	<?php
 				unset($confirm);
 				unset($value);
 			} ?>
 	<?php
-		$url = 'http://' . $_SERVER['SERVER_NAME'] . '/appPG/' . Router::get('controller') . '/';
+		$url = 'http://' . $_SERVER['SERVER_NAME']  . Router::get('controller') . '/';
 		foreach($dataGrid->array_mimes as $key => $value){ ?>
 		<?php if(substr($value,0,1)=='_'){ ?>
 			<td><a href="<?php echo $url . substr($value, 1, strlen($value)-1) . '/' . $source->$pk; ?>" target="_blank"><img src="<?php echo PUBLIC_PATH . 'img/datagrid/' . $key . '.gif' ?>"></a></td>

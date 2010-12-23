@@ -107,11 +107,15 @@ class dataGrid{
     */
    public $delete			=	'';
    /**
+    *OPCIONES
+    */
+   public $opClonar = '';
+   /**
     *crea una imagen con el link para ir al formulario create
   */
    public $create			=	'';
    /**
-    *crea una imagen con el link para ir al formulario create
+    *crea una imagen con el link para ir al formulario read
   */
    public $read			=	'';
    /**
@@ -223,12 +227,12 @@ class dataGrid{
     public $table_tools = false;
     
     public $datatable = TRUE;
-    public function __construct($model, $model_alias=TRUE) {
+    public function __construct($model, $model_alias=FALSE) {
 	$this->data_source = $model;
         //$this->data_source1= $model;
-	$this->primary_key =    $model[0]->primary_key[0];
 	$this->url = Router::get('controller') . '/' . Router::get('action');
 	if($this->existData()){
+            $this->primary_key =    $model[0]->primary_key[0];
 	    if(array_key_exists('per_page', $this->data_source)){
 		$this->use_paginator = true;
 		$this->fields 	= array_combine($this->data_source->items[0]->fields, $this->data_source->items[0]->fields);
@@ -539,6 +543,7 @@ class dataGrid{
 	    if($this->edit!='') $i++;
 	    if($this->delete!='') $i++;
             if($this->read!='') $i++;
+            if($this->opClonar!='') $i++;
 	    return count($this->array_mimes) + $i;
        }
 
